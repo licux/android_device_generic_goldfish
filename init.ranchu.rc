@@ -5,13 +5,11 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug mode=755
 
 on init
-
     symlink /dev/goldfish_pipe /dev/android_pipe
     symlink /dev/goldfish_pipe /dev/qemu_pipe
 
 on post-fs-data
     setprop vold.post_fs_data_done 1
-
 
 on boot
     setprop net.eth0.gw 10.0.2.2
@@ -22,6 +20,8 @@ on boot
     setprop ro.product.device generic
     setprop ro.hardware.audio.primary goldfish
     setprop ro.setupwizard.mode EMULATOR
+    mount binfmt_misc none /proc/sys/fs/binfmt_misc
+    start ranchu-nb
 
 # fake some battery state
     setprop status.battery.state Slow
@@ -83,6 +83,12 @@ service ranchu-net /vendor/bin/init.ranchu-net.sh
     user root
     group root wakelock
     oneshot
+
+service ranchu-nb /system/bin/init.ranchu-nb.sh
+    user root
+    group root
+    oneshot
+    seclabel u:r:zygote:s0
 
 # The qemu-props program is used to set various system
 # properties on boot. It must be run early during the boot
