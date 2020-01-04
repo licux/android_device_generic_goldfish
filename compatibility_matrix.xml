@@ -55,5 +55,28 @@
             <instance>default</instance>
         </interface>
     </hal>
-
+    <hal format="hidl" optional="true">
+        <name>android.hardware.wifi</name>
+        <version>1.0</version>
+        <interface>
+            <name>IWifi</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.wifi.offload</name>
+        <version>1.0</version>
+        <interface>
+            <name>IOffload</name>
+        </interface>
+            <instance>default</instance>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.wifi.supplicant</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISupplicant</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>
