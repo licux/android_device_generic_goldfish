@@ -19,6 +19,7 @@ on post-fs-data
     chown system system /data/misc/wifi/WifiConfigStore.xml
     chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
     chown dhcp dhcp /data/misc/dhcp
+    chmod 0666 /dev/video0
 
 on boot
     setprop net.eth0.gw 10.0.2.2
